@@ -3,15 +3,16 @@ class kant:
     def __init__(self,kanter, lengde):
         self.kanter = kanter
         self.sider = kanter
-        self.lengde = lengde
+        self.lengde = float(lengde)
     def omkrets(self):
         return f"{self.kanter * self.lengde}"
 
 class kvadrat(kant):
     def __init__(self):
-        super().__init__()
+        super().__init__(4,lengde)
+        
     def omkretsK(self):
-        return f"Omkretsen er "
+        return f"Omkretsen er {self.omkrets()}"
     def areal(self):
         return self.lengde**2
 
