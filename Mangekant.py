@@ -1,18 +1,27 @@
 
 class kant:
-    def __init__(self,kanter, lengde):
+    def __init__(self,kanter:int, lengde:list):
         self.kanter = kanter
         self.sider = kanter
-        self.lengde = float(lengde)
-    def omkrets(self):
-        return f"{self.kanter * self.lengde}"
+        self.lengde = lengde
 
-class kvadrat(kant):
-    def __init__(self):
-        super().__init__(4,lengde)
-        
+    def omkrets(self):
+        omkretsen = 0
+        for i in range(0,self.sider):
+            omkretsen += self.lengde[i]
+        return omkretsen
+    
+    def visInfo(self):
+        print(f"kanten din har {self.kanter} mengde kanter og sider, og omkretsen er {self.omkrets()} lang :)")
+
+class rektangel(kant):
+    def __init__(self, kanter, lengde, bredde):
+        super().__init__(kanter)
+        self.lengde = lengde
+        self.bredde = bredde
+  
     def omkretsK(self):
-        return f"Omkretsen er {self.omkrets()}"
+        return self.omkrets()
     def areal(self):
         return self.lengde**2
 
@@ -22,9 +31,24 @@ class trekant(kant):
         self.høyde = høyde
     def areal(self):
         self.lengde*self.høyde /2
-    
 
-
-lengde = input("Hvor lang? ")        
-fourkatbnt = kant(4, lengde)
+i = 0
+sider = int(input("hvor mange sider? "))
+liste = []
+while i < sider:
+    liste.append(int(input(f"hvor lang er lengde {i+1}? ")))  
+    i += 1
+     
+fourkatbnt = kant(sider, liste)
 print(fourkatbnt.lengde)
+print(fourkatbnt.omkrets())
+fourkatbnt.visInfo()
+
+fankebank = kant(3,[4,2,6])
+googleshlarp = kant(4,[4,2,6,7])
+yimabadoo = kant(6,[6,6,6,6,6,6])
+
+listeMedMangekanter = [fourkatbnt,fankebank,googleshlarp,yimabadoo] 
+
+kvadrant = rektangel(5,7)
+print(kvadrant.lengde)
