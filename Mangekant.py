@@ -1,3 +1,4 @@
+import math
 
 class kant:
     def __init__(self,kanter:int, lengder:list):
@@ -35,12 +36,29 @@ class kvadrat(rektangel):
     def areal(self):
         return self.lengde**2
 
-class trekant(kant):
-    def __init__(self, høyde):
-        super().__init__()
-        self.høyde = høyde
+class Trekant(kant):
+    def __init__(self, a, b, c):
+        super().__init__(3, [a, b, c])
+        self.a = a
+        self.b = b
+        self.c = c
+    
+    def omkrets(self):
+        return self.a + self.b + self.c
+    
     def areal(self):
-        self.lengde*self.høyde /2
+        s = self.omkrets() / 2
+        return math.sqrt(s * (s - self.a) * (s - self.b) * (s - self.c))
+    
+    def __str__(self):
+        return (f"areaket er {self.areal()}")
+
+A = Trekant(5,5,5)
+
+
+print(f"{A}")
+
+
 
 """ i = 0
 sider = int(input("hvor mange sider? "))
@@ -54,6 +72,7 @@ print(fourkatbnt.lengde)
 print(fourkatbnt.omkrets())
 fourkatbnt.visInfo() """
 
+""""
 fankebank = kant(3,[4,2,6])
 googleshlarp = kant(4,[4,2,6,7])
 yimabadoo = kant(6,[6,6,6,6,6,6])
@@ -61,4 +80,4 @@ yimabadoo = kant(6,[6,6,6,6,6,6])
 listeMedMangekanter = [fankebank,googleshlarp,yimabadoo] 
 
 kvadrant = rektangel(5,7)
-print(kvadrant.sider)
+print(kvadrant.sider) """
